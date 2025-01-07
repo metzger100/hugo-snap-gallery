@@ -24,7 +24,7 @@ Use this like an additional Hugo theme, so add it to the `theme` config. Example
 theme = [ "hugo-sustain", "hugo-simple-gallery" ]
 ```
 
-## `{{< snap-gallery >}}` shortcode usage
+## `{{< simple-gallery >}}` shortcode usage
 
 Quickstart:
 
