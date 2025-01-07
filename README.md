@@ -36,7 +36,7 @@ All parameters:
 
 - `src`: Must contain either a comma-separated list of paths to images, or a directory path containing images. Note that the paths are absolute, so imagine a `/` in front of them. Also note that the shortcode assumes that they are all stored in `/static/`.
 - `lightbox`: Whether a click on an image shall open a lightbox modal, which displays captions if given and provides arrows to slide through the gallery including a numbertext to show which image of the gallery is displayed ("4/13"). Default: `true`.
-- `caption`: Example `{{< snap-gallery src="img/folder2/" caption="map[img/folder2/image1.jpg:{'Image 1'}, img/folder2/image2.png:{'Image 2'}]" >}}` Default: `map[]`.
+- `caption`: Example `{{< snap-gallery src="img/folder2/,  image2.png" caption="map[img/folder2/image1.jpg:{'Image 1'}, image2.png:{'Image 2'}]" >}}` Default: `map[]`.
 - `mode`: Can be either `gallery` or `slideshow`. Default: `gallery`.
 - `slideshowrotate`: Whether the slideshow shall automatically rotate through the images. Default: `true`.
 
