@@ -45,7 +45,3 @@ All parameters:
 ## Credits
 
 This is a rewrite of [Max Mehl`s - snap gallery](https://src.mehl.mx/mxmehl/hugo-snap-gallery)
-
-## License
-
-This repository follows the REUSE best practices for clear copyright and licensing information. The license texts for all used licenses can be found in the LICENSES/ directory under the root of this repository. Visit [reuse.software](https://reuse.software) for more information.
