@@ -26,6 +26,12 @@ Compared to the original by [Max Mehl](https://src.mehl.mx/mxmehl/hugo-snap-gall
 
 ## Installation
 
+If you don't plan to make any significant changes, but want to track and update the theme, you can add it as a git submodule via the following command (Don't forget to [init](https://gohugo.io/getting-started/quick-start/) the src-folder):
+
+```
+git submodule add https://github.com/metzger100/hugo-snap-gallery themes/hugo-snap-gallery
+```
+
 Use this like an additional Hugo theme, so add it to the `theme` config. Example:
 
 ```
