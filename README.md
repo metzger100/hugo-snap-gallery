@@ -2,6 +2,11 @@
 
 Automagical css image gallery in [Hugo](https://gohugo.io/) using shortcodes. Lightweight, slim and fully local JavaScript.
 
+# My changes compared to the original of Max Mehl:
+
+- replaced the flexbox with a grid to automatically calculate the number of columns based on the screensize of the client and the defined minwidth
+- remove Next/prev buttons as well as the image numbertext in slideshow and lightbox views if the image count is 1
+
 ## Features
 
 - Custom `{{< snap-gallery >}}` shortcode that allows to display multiple images
