@@ -2,7 +2,6 @@
   SPDX-FileCopyrightText: 2024 Max Mehl <https://mehl.mx>
   SPDX-License-Identifier: MIT
 */
-
 $gap: var(--gap);
 
 .snap-gallery,
@@ -13,31 +12,25 @@ $gap: var(--gap);
   position: relative;
   margin-bottom: 15px;
   /* Use grid instead of flex */
-  grid-template-columns: repeat(auto-fill, minmax(var(--min-width), 1fr)); /* Dynamic columns */
+  grid-template-columns: repeat(var(--columns, 1), 1fr); /* Dynamic columns based on --columns */
   gap: $gap;
 }
 
 .snap-image {
   cursor: var(--cursor);
-  /* No need to specify width, it is controlled by the grid */
   display: block;
+  position: relative;
+  overflow: hidden;
+  width: 100%; /* Fill the container */
+
+  aspect-ratio: var(--aspectratio); /* Aspect ratio for the tile container */
 }
 
-.snap-gallery {
-  flex-wrap: wrap;
-  gap: $gap;
+.snap-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
-
-.snap-slideshow {
-  width: var(--slideshow-width);
-  margin-left: auto;
-  margin-right: auto;
-  /* Hide all contained images except the first */
-  .snap-image:not(:first-child) {
-    display: none;
-  }
-}
-
 
 // Animation
 .snap-slideshow .snap-image,
