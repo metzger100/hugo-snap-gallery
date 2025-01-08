@@ -7,7 +7,9 @@
 <div class="snap-lightbox" id="snap-lightbox-{{ $galno }}">
   {{- range $i, $img := $imgs }}
   <div class="snap-lightbox-inner">
-    <div class="snap-numbertext">{{ add $i 1 }} / {{ len $imgs }}</div>
+    {{- if gt (len $imgs) 1 }}
+      <div class="snap-numbertext">{{ add $i 1 }} / {{ len $imgs }}</div>
+    {{- end }}
     <img
       src="{{ relURL $img.src }}"
       {{ range $attr, $value := $img.html -}}
@@ -23,6 +25,8 @@
   <!-- Close and Next/previous controls -->
   <span class="snap-close" onclick="closeLightbox({{ $galno }})">&times;</span>
 
-  <a class="snap-prev" onclick="moveLightboxItem({{ $galno }}, -1)"><span>&#10094;</span></a>
-  <a class="snap-next" onclick="moveLightboxItem({{ $galno }}, 1)"><span>&#10095;</span></a>
+  {{- if gt (len $imgs) 1 }}
+    <a class="snap-prev" onclick="moveLightboxItem({{ $galno }}, -1)"><span>&#10094;</span></a>
+    <a class="snap-next" onclick="moveLightboxItem({{ $galno }}, 1)"><span>&#10095;</span></a>
+  {{- end }}
 </div>

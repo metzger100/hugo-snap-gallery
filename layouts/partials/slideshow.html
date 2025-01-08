@@ -7,7 +7,9 @@
 <div class="snap-slideshow" id="snap-slideshow-{{ $galno }}" style="--columns:1;--min-width:0px;--gap:0px;--slideshow-width:{{ default "100%" .width }};--cursor:{{ .cursor }};--aspectratio:{{ safeCSS (default "16/10" .aspectratio) }};">
   {{- range $i, $img := $imgs }}
   <div class="snap-image">
-    <div class="snap-numbertext">{{ add $i 1 }} / {{ len $imgs }}</div>
+    {{- if gt (len $imgs) 1 }}
+      <div class="snap-numbertext">{{ add $i 1 }} / {{ len $imgs }}</div>
+    {{- end }}
     {{- with $img.html.title }}
       <div class="snap-caption">{{ . }}</div>
     {{- end }}
@@ -20,6 +22,8 @@
   </div>
   {{- end }}
 
-  <a class="snap-prev" onclick="moveSlideshowItem({{ $galno }}, -1)"><span>&#10094;</span></a>
-  <a class="snap-next" onclick="moveSlideshowItem({{ $galno }}, 1)"><span>&#10095;</span></a>
+  {{- if gt (len $imgs) 1 }}
+    <a class="snap-prev" onclick="moveSlideshowItem({{ $galno }}, -1)"><span>&#10094;</span></a>
+    <a class="snap-next" onclick="moveSlideshowItem({{ $galno }}, 1)"><span>&#10095;</span></a>
+  {{- end }}
 </div>
