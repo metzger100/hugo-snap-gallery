@@ -11,6 +11,7 @@
   <div class="snap-image">
     <img
       src="{{ relURL $img.src }}"
+      loading="lazy"
       {{ range $attr, $value := $img.html -}}
         {{ safeHTMLAttr $attr }}={{ $value }}
       {{ end -}}
