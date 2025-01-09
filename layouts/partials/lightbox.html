@@ -4,7 +4,7 @@
 -->
 {{- $imgs := .imgs -}}
 {{- $galno := .galno -}}
-<div class="snap-lightbox" id="snap-lightbox-{{ $galno }}">
+<div class="snap-lightbox" id="snap-lightbox-{{ $galno }}" tabindex="-1" onkeydown="handleLightboxKey(event, {{ $galno }})">
   {{- range $i, $img := $imgs }}
   <div class="snap-lightbox-inner">
     {{- if gt (len $imgs) 1 }}
@@ -30,3 +30,37 @@
     <a class="snap-next" onclick="moveLightboxItem({{ $galno }}, 1)"><span>&#10095;</span></a>
   {{- end }}
 </div>
+
+<script>
+  function handleLightboxKey(event, galno) {
+    const lightbox = document.getElementById(`snap-lightbox-${galno}`);
+    if (!lightbox) return;
+
+    switch (event.key) {
+      case "ArrowLeft": // Left arrow key for previous
+        moveLightboxItem(galno, -1);
+        break;
+      case "ArrowRight": // Right arrow key for next
+        moveLightboxItem(galno, 1);
+        break;
+      case "Escape": // Escape key for close
+        closeLightbox(galno);
+        break;
+    }
+  }
+
+  function openLightbox(galno) {
+    const lightbox = document.getElementById(`snap-lightbox-${galno}`);
+    if (lightbox) {
+      lightbox.style.display = "block";
+      lightbox.focus(); // Programmatically set focus when the lightbox is opened
+    }
+  }
+
+  function closeLightbox(galno) {
+    const lightbox = document.getElementById(`snap-lightbox-${galno}`);
+    if (lightbox) {
+      lightbox.style.display = "none";
+    }
+  }
+</script>
