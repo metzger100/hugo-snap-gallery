@@ -82,6 +82,10 @@ $gap: var(--gap);
   user-select: none;
 }
 
+.snap-lightbox:focus {
+  outline: none;
+}
+
 // /* Click on the complete background closes the lightbox */
 // /* Exception: arrow in gallery, they have higher z-index */
 // a.snap-lightbox-close {
