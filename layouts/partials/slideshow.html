@@ -6,7 +6,7 @@
 {{- $galno := .galno -}}
 <div class="snap-slideshow" id="snap-slideshow-{{ $galno }}" style="--columns:1;--min-width:0px;--gap:0px;--slideshow-width:{{ default "100%" .width }};--cursor:{{ .cursor }};--aspectratio:{{ safeCSS (default "16/10" .aspectratio) }};">
   {{- range $i, $img := $imgs }}
-  <div class="snap-image" style="{{ if eq $i 0 }}display: inline-block;{{ else }}display: none;{{ end }}">
+  <div class="snap-image">
     {{- if gt (len $imgs) 1 }}
       <div class="snap-numbertext">{{ add $i 1 }} / {{ len $imgs }}</div>
     {{- end }}
