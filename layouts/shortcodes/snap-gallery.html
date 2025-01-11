@@ -2,7 +2,7 @@
   SPDX-FileCopyrightText: 2024 Max Mehl <https://mehl.mx>
   SPDX-License-Identifier: MIT
 -->
-{{- if not (or .IsHome (eq .Kind "section") (eq .Kind "taxonomy") (eq .Kind "taxonomyTerm")) -}}
+{{ if not (or (eq .Page.Kind "section") (eq .Page.Kind "taxonomy") (eq .Page.Kind "taxonomyTerm")) }}
   {{/*  Count number of gallery on page  */}}
   {{- $.Page.Scratch.Add "gallerycount" 1 -}}
   {{- $galno := $.Page.Scratch.Get "gallerycount" -}}
