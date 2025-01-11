@@ -151,6 +151,12 @@ $gap: var(--gap);
   }
 }
 
+.snap-slideshow .snap-caption {
+  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent gray */
+  padding: 8px 12px; /* Optional: adjust padding for better appearance */
+  border-radius: 5px; /* Optional: rounded corners for a modern look */
+}
+
 // /* Caption text */
 // .caption-container {
 //   text-align: center;
