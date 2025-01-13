@@ -8,6 +8,7 @@ Compared to the original by [Max Mehl](https://src.mehl.mx/mxmehl/hugo-snap-gall
 - Replaced the flexbox with a grid to automatically calculate the number of columns based on the client's screen size and the defined minimum width. Columns no longer need to be defined.
 - Removed the Next/Prev buttons as well as the image number text in both the slideshow and lightbox views if the image count is 1.
 - Added support for key navigation in the lightbox
+- Added a half transperant background to captions in slideshows for better readability
 - Fixed a bug with the rebuilding of the gallery, where css and js got lost in the process of rebuilding
 
 ## Features
