@@ -57,7 +57,7 @@ All parameters:
 - `metadata`: See below for how to add metadata to your files. Default: `map[]`.
 - `mode`: Can be either `gallery` or `slideshow`. Default: `gallery`.
 - For gallery mode:
-  - `minwidth`: Minimum width that each image shall have, e.g. `150px` or `30%`. May conflict with the desired amount of columns. Default: `200px`.
+  - `minwidth`: Minimum width that each image shall have, e.g. `150px` or `30%`. Default: `200px`.
 - For slideshow mode:
   - `slideshowwidth`: Width of slideshow, e.g. `300px` or `80%`. Default: `100%`.
   - `slideshowrotate`: Whether the slideshow shall automatically rotate through the images. Default: `true`.
