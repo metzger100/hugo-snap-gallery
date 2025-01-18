@@ -63,8 +63,6 @@ All parameters:
   - `slideshowrotate`: Whether the slideshow shall automatically rotate through the images. Default: `true`.
   - `slideshowrotate_timer`: Interval of automatic slideshow rotation (if enabled), in milliseconds. Default: `5000` (5 seconds).
 
-**Note: Boolean values (`true`/`false`) must be provided without surrounding `"` characters!** `lightbox=false` disables the lightbox, while `lightbox="false"` does not.
-
 ### Metadata
 
 Using separate data files, you can provide metadata to the image files. Imagine using the following shortcode: `{{< snap-gallery src="image1.jpg, img/folder1/" metadata="images.en" >}}`.
