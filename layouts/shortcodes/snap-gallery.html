@@ -64,7 +64,7 @@
 {{- end -}}
 
 {{/*  Define cursor when hovering over images, depending on lightbox status  */}}
-{{- $lightbox := (default true .Params.lightbox) -}}
+{{- $lightbox := or (eq (lower (printf "%v" .Params.lightbox)) "false") (and (not .Params.lightbox) false) | not -}}
 {{- $cursor := "auto" -}}
 {{- if $lightbox }}{{ $cursor = "zoom-in" }}{{ end -}}
 
@@ -77,7 +77,7 @@
 {{- else if eq $mode "slideshow" -}}
 {{- partial "slideshow" (dict "imgs" $imgs "galno" $galno "width" .Params.slideshowwidth "cursor" $cursor "aspectratio" .Params.aspectratio) -}}
 {{/*  Set autorotate timer for slideshow, if configured (default: yes)  */}}
-{{- if (default true .Params.slideshowrotate) -}}
+{{- if (or (eq (lower (printf "%v" .Params.slideshowrotate)) "false") (and (not .Params.slideshowrotate) false) | not) -}}
 <script>const autoSlideshow = setInterval(moveSlideshowItem, {{ default 5000 .Params.slideshowrotate_timer }}, {{ $galno }}, 1, "auto");</script>
 {{- end -}}
 {{- end -}}
