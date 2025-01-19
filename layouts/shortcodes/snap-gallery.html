@@ -3,12 +3,12 @@
   SPDX-License-Identifier: MIT
 -->
 {{/*  Count number of gallery on page  */}}
-{{- $.Page.Scratch.Add "gallerycount" 1 -}}
-{{- $galno := $.Page.Scratch.Get "gallerycount" -}}
+{{- $.Page.Store.Add "gallerycount" 1 -}}
+{{- $galno := $.Page.Store.Get "gallerycount" -}}
 
 {{/*  Load CSS/JS and make sure it is only loaded once  */}}
-{{- if not ($.Scratch.Get "snapGalleryLoaded") -}}
-  {{ $.Scratch.Set "snapGalleryLoaded" true }}
+{{- if not ($.Store.Get "snapGalleryLoaded") -}}
+  {{ $.Store.Set "snapGalleryLoaded" true }}
   {{ with resources.Get "scss/snap-gallery.scss" | toCSS }}
   <link rel="stylesheet" href="{{ .RelPermalink }}" crossorigin="anonymous">
   {{ end }}
