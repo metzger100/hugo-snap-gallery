@@ -4,7 +4,7 @@
 -->
 {{- $imgs := .imgs -}}
 {{- $galno := .galno -}}
-<div class="snap-gallery"
+<div class="snap-gallery" id="snap-gallery-{{ $galno }}"
      style="--min-width:{{ default "200px" .minwidth }};--gap:10px;--cursor:{{ .cursor }};--aspectratio:{{ safeCSS (default "16/10" .aspectratio) }};"
      data-number-of-images="{{ len $imgs }}">
   {{- range $i, $img := $imgs }}
