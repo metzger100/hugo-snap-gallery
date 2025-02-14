@@ -10,6 +10,7 @@ Compared to the original by [Max Mehl](https://src.mehl.mx/mxmehl/hugo-snap-gall
 - Added support for key navigation in the lightbox
 - Added a half transperant background to captions in slideshows for better readability
 - Fixed a bug with the rebuilding of the site, where css and js got lost in the process of rebuilding
+- Fixed a bug with conflicts of multiple galleries on one index page
 
 ## Features
 
