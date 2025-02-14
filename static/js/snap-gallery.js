@@ -71,7 +71,7 @@ function showItem(baseId, id, n, className) {
 
   // make desired item visible
   const showCurrentItem = () => {
-    items[imageIndex[id] - 1].style.display = "inline-block";
+    items[imageIndex[id] - 1].style.display = "flex";
   };
 
   updateIndex();

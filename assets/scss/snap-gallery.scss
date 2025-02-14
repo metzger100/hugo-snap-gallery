@@ -57,23 +57,11 @@ $gap: var(--gap);
   z-index: 999;
   width: 100%;
   height: 100%;
-  text-align: center;
-  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
   top: 0;
   left: 0;
   background: rgba(0, 0, 0, 0.8);
-
-  /* keep lightbox in middle. TODO: hacky, and not realibly in middle */
-  &:before {
-    content: "";
-    display: inline-block;
-    vertical-align: middle;
-    width: 0;
-    /* adjust for white space between pseudo element and next sibling */
-    margin-right: -.25em;
-    /* stretch line height */
-    height: 100%;
-  }
 }
 
 // Disable cursor selection in lightbox and on slideshow, especially controls
@@ -101,19 +89,16 @@ $gap: var(--gap);
 
 /* Container for image */
 .snap-lightbox-inner {
-  display: inline-block;
-  vertical-align: middle;
-  white-space: normal;
   max-width: 90%;
   max-height: 80%;
-  height: auto;
+  text-align: center;
+  flex-direction: column;
 
   img {
     max-height: 80vh;
-  }
-
-  @media screen and (max-width: 767px) {
-    max-width: 80%;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
   }
 }
 
