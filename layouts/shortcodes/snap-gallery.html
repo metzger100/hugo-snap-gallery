@@ -2,9 +2,8 @@
   SPDX-FileCopyrightText: 2024 Max Mehl <https://mehl.mx>
   SPDX-License-Identifier: MIT
 -->
-{{/*  Count number of gallery on page  */}}
-{{- $.Page.Store.Add "gallerycount" 1 -}}
-{{- $galno := $.Page.Store.Get "gallerycount" -}}
+{{/*  Generate hopefully unique ids */}}
+{{- $galno := delimit (shuffle (seq 1 9)) "" }}
 
 {{/*  Load CSS/JS and make sure it is only loaded once  */}}
 {{- if not ($.Store.Get "snapGalleryLoaded") -}}
