@@ -6,8 +6,8 @@
 // Variables
 var lightbox_baseid = "snap-lightbox-";
 var slideshow_baseid = "snap-slideshow-";
-//var imageIndex = {1: 1, 2: 1, 3: 1};
-var imageIndex  = {}
+// current index per gallery
+var imageIndex  = {};
 
 // Open the Lightbox
 function openLightbox(id) {
@@ -15,7 +15,7 @@ function openLightbox(id) {
 
   // Kill automatic slideshow when lightbox opened
   try {
-    clearInterval(autoSlideshow);
+    if (autoSlideshow[id]) clearInterval(autoSlideshow[id]);
   } catch (e) {
     console.log("Lightbox error: " + e)
   }
@@ -42,7 +42,7 @@ function moveSlideshowItem(id, n, mode) {
 
   // Kill automatic slideshow once the slideshow has been moved manually
   if (mode !== "auto") {
-    clearInterval(autoSlideshow);
+    if (autoSlideshow[id]) clearInterval(autoSlideshow[id]);
   }
 }
 
