@@ -11,8 +11,7 @@ $gap: var(--gap);
   align-items: center;
   position: relative;
   margin-bottom: 15px;
-  /* Use grid instead of flex */
-  grid-template-columns: repeat(var(--columns, 1), 1fr); /* Dynamic columns based on --columns */
+  grid-template-columns: repeat(var(--columns, 1), 1fr);
   gap: $gap;
 }
 
@@ -21,9 +20,8 @@ $gap: var(--gap);
   display: block;
   position: relative;
   overflow: hidden;
-  width: 100%; /* Fill the container */
-
-  aspect-ratio: var(--aspectratio); /* Aspect ratio for the tile container */
+  width: 100%;
+  aspect-ratio: var(--aspectratio);
 }
 
 .snap-image img {
@@ -32,191 +30,150 @@ $gap: var(--gap);
   object-fit: cover;
 }
 
-// Animation
+/* ────────────────────────────────
+   Animation
+   ────────────────────────────────*/
 .snap-slideshow .snap-image,
 .snap-lightbox .snap-lightbox-inner {
   animation: 1s fade;
 
   @keyframes fade {
-    from {
-      opacity: .4
-    }
-
-    to {
-      opacity: 1
-    }
+    from   { opacity: .4 }
+    to     { opacity: 1  }
   }
 }
 
+/* ────────────────────────────────
+   Lightbox
+   ────────────────────────────────*/
 .snap-lightbox {
-  /** Default lightbox to hidden */
   display: none;
-
-  /** Position and style */
   position: fixed;
-  z-index: 999;
   inset: 0;
   height: 100dvh;
+  z-index: 999;
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.8);
+  user-select: none;          /* disable text selection */
 }
 
-// Disable cursor selection in lightbox and on slideshow, especially controls
-.snap-lightbox,
-.snap-slideshow {
-  user-select: none;
-}
-
-.snap-lightbox:focus {
-  outline: none;
-}
-
-// /* Click on the complete background closes the lightbox */
-// /* Exception: arrow in gallery, they have higher z-index */
-// a.snap-lightbox-close {
-//   position: fixed;
-//   z-index: 800;
-//   width: 100%;
-//   height: 100%;
-//   text-align: center;
-//   white-space: nowrap;
-//   top: 0;
-//   left: 0;
-// }
-
-/* Container for image */
+/* ── inner container ─────────────────*/
 .snap-lightbox-inner {
+  /* centre the whole figure (image + numbertext) and its caption */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   max-width: 90%;
   max-height: 80%;
   text-align: center;
-  flex-direction: column;
-
-  img {
-    max-height: 80dvh;
-    width: auto;
-    max-width: 100%;
-    object-fit: contain;
-  }
 }
 
-/* Number text (1/3 etc) and captions*/
-.snap-numbertext {
+/* ── wrapper that holds image + counter ───────────*/
+.snap-media {
+  position: relative;         /* lets numbertext sit on top-left of the image */
+  display: inline-block;
+  max-height: 80dvh;
+}
+
+.snap-media img {
+  max-height: 80dvh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+/* counter */
+.snap-media .snap-numbertext {
   position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
   color: #f2f2f2;
-  background-color: #000;
   font-size: 12px;
   padding: 8px 12px;
 }
 
+/* ── caption ───────────────────────────*/
 .snap-caption {
+  margin-top: 8px;
   bottom: 0;
-  color: #f2f2f2;
-  padding: 8px 0;
   left: 10%;
   width: 80%;
+  color: #f2f2f2;
   text-shadow: 1px 1px 10px #000;
   font-weight: 700;
   font-size: 1.1em;
   text-align: center;
 
-  // As slideshow, position on picture on mid-screens and wider
+  /* slideshow view */
   .snap-slideshow & {
     position: absolute;
+    background: rgba(0, 0, 0, 0.5);
+    padding: 8px 12px;
+    border-radius: 5px;
 
     @media screen and (max-width: 767px) {
       display: none;
     }
   }
-  // In lightbox, always show below picture
+  /* lightbox view — always below the picture */
   .snap-lightbox & {
     position: relative;
+    left: auto;
+    width: auto;
+    margin: 8px 0 0;
+    background: none;
+    padding: 0;
+    text-align: center;
   }
 }
 
-.snap-slideshow .snap-caption {
-  background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent gray */
-  padding: 8px 12px; /* Optional: adjust padding for better appearance */
-  border-radius: 5px; /* Optional: rounded corners for a modern look */
-}
-
-// /* Caption text */
-// .caption-container {
-//   text-align: center;
-//   background-color: black;
-//   padding: 2px 16px;
-//   color: white;
-// }
-
-/* prev/next arrows & close button */
+/* ── prev / next and close buttons ─────────────────*/
 .snap-prev,
 .snap-next {
   color: #fff;
   text-decoration: none !important;
   font-size: 30px;
-
   position: absolute;
-  height: 100%;
   z-index: 800;
+  height: 100%;
   width: 5%;
   cursor: pointer;
 
-  // Slideshow specifics
   .snap-slideshow & {
     display: flex;
     justify-content: center;
     align-items: center;
-
-    background-color: rgba(0, 0, 0, 0.7);
-
+    background: rgba(0, 0, 0, 0.7);
     height: 15%;
     width: 10%;
     min-height: 50px;
     min-width: 50px;
 
     &:hover {
-      background-color: rgba(0, 0, 0, 0.8);
-      transition: all 0.25s ease;
+      background: rgba(0, 0, 0, 0.8);
+      transition: all .25s ease;
     }
   }
 
-  // Lightbox-specifics
   .snap-lightbox & {
     @media screen and (max-width: 767px) {
       width: 10%;
     }
   }
 
-  // Item containing arrow
   span {
     padding: 1%;
-
-    // Lightbox specifics
-    .snap-lightbox & {
-      position: fixed;
-      top: 50%;
-    }
+    .snap-lightbox & { position: fixed; top: 50%; }
   }
 }
 
-// Position arrows for left/right
-.snap-prev {
-  left: 0;
+.snap-prev { left: 0;  .snap-lightbox & span { left: .5%; } }
+.snap-next { right: 0; .snap-lightbox & span { right: .5%; } }
 
-  .snap-lightbox & span {
-    left: 0.5%;
-  }
-}
-
-.snap-next {
-  right: 0;
-
-  .snap-lightbox & span {
-    right: 0.5%;
-  }
-}
-
-/* The Close Button */
 .snap-close {
   display: flex;
   justify-content: center;
@@ -234,7 +191,6 @@ $gap: var(--gap);
   &:hover,
   &:focus {
     color: #999;
-    text-decoration: none;
     cursor: pointer;
   }
 }
