@@ -30,6 +30,18 @@ $gap: var(--gap);
   object-fit: cover;
 }
 
+.snap-image .snap-numbertext {
+  position: absolute;
+  top: 0;
+  left: 0;
+  background: #000;
+  color: #f2f2f2;
+  font-size: 12px;
+  padding: 8px 12px;
+  z-index: 2;
+}
+
+
 /* ────────────────────────────────
    Animation
    ────────────────────────────────*/
